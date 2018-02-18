@@ -12,9 +12,6 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    CustomChrono mChronometer;
-    long timeWhenStopped;
-    String timeDisplayed = "00:00:00";
     int coursePens;
     int timePens;
     int totalPens;
@@ -24,14 +21,11 @@ public class MainActivity extends AppCompatActivity {
     int totalTeamPens;
     final int COURSE_PENS = 4;
     final int TIME_PEN = 1;
-    final int COURSE_PENS2 = 4;
-    final int TIME_PEN2 = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        displayTimeSet(timeDisplayed);
         displayCoursePens(coursePens);
         displayCoursePens2(coursePens2);
         displayTimePens(timePens);
@@ -42,47 +36,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void onClick(View view) {
-        InputMethodManager imm = (InputMethodManager) view.getContext()
-                .getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-    }
-
-    /**
-     * Displays the time.
-     * @param timeDisplayed
-     */
-    public void displayTimeSet (String timeDisplayed) {
-        TextView timeView = (TextView) findViewById(R.id.time_set);
-        TextView timeView2 = (TextView) findViewById(R.id.time_set2) ;
-        timeView.setText(String.valueOf(timeDisplayed));
-        timeView2.setText(String.valueOf(timeDisplayed));
-    }
-
-    public void displayChrono () {
-        mChronometer = (CustomChrono) findViewById(R.id.chronometer);
-        mChronometer.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
-    }
-
-    public void startChrono (View view) {
-        mChronometer = (CustomChrono) findViewById(R.id.chronometer);
-        mChronometer.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
-        mChronometer.start();
-    }
-
-    public void stopChrono (View view) {
-        timeWhenStopped = mChronometer.getBase() - SystemClock.elapsedRealtime();
-        mChronometer.stop();
-        timeDisplayed = (String) mChronometer.getText();
-        displayTimeSet(timeDisplayed);
-    }
-
     public void displayCoursePens (int coursePens){
         TextView courseView = (TextView) findViewById(R.id.course_pens);
         courseView.setText(String.valueOf(coursePens));
     }
 
-    public void displayCoursePens2 (int coursePens){
+    public void displayCoursePens2 (int coursePens2){
         TextView courseView2 = (TextView) findViewById(R.id.course_pens2);
         courseView2.setText(String.valueOf(coursePens2));
     }
@@ -124,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addCoursePens2 (View view) {
-        coursePens2 = coursePens2 + COURSE_PENS2;
+        coursePens2 = coursePens2 + COURSE_PENS;
         displayCoursePens2(coursePens2);
         displayTotalPens2();
         displayTeamPens();
@@ -140,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addTimePens2 (View view) {
-        timePens2 = timePens2 + TIME_PEN2;
+        timePens2 = timePens2 + TIME_PEN;
         displayTimePens2(timePens2);
         displayTotalPens2();
         displayTeamPens();
@@ -148,9 +107,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void resetAll (View view) {
-        mChronometer.setBase(SystemClock.elapsedRealtime());
-        timeWhenStopped = 0;
-        timeDisplayed = "00:00:00";
         coursePens = 0;
         timePens = 0;
         totalPens = 0;
@@ -158,7 +114,6 @@ public class MainActivity extends AppCompatActivity {
         timePens2 = 0;
         totalPens2 = 0;
         totalTeamPens = 0;
-        displayTimeSet(timeDisplayed);
         displayCoursePens(coursePens);
         displayCoursePens2(coursePens2);
         displayTimePens(timePens);
@@ -172,8 +127,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
-        savedInstanceState.putLong("timeWhenStopped", timeWhenStopped);
-        savedInstanceState.putString("timeDisplayed", timeDisplayed);
         savedInstanceState.putInt("coursePens", coursePens);
         savedInstanceState.putInt("timePens", timePens);
         savedInstanceState.putInt("totalPens", totalPens);
@@ -186,8 +139,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        timeWhenStopped  = (long) savedInstanceState.getLong("timeWhenStopped");
-        timeDisplayed = savedInstanceState.getString("timeDisplayed");
         coursePens = savedInstanceState.getInt("coursePens");
         timePens = savedInstanceState.getInt("timePens");
         totalPens = savedInstanceState.getInt("totalPens");
@@ -195,7 +146,6 @@ public class MainActivity extends AppCompatActivity {
         timePens2 = savedInstanceState.getInt("timePens2");
         totalPens2 = savedInstanceState.getInt("totalPens2");
         totalTeamPens = savedInstanceState.getInt("totalTeamPens");
-        displayTimeSet(timeDisplayed);
         displayCoursePens(coursePens);
         displayCoursePens2(coursePens2);
         displayTimePens(timePens);
@@ -203,8 +153,6 @@ public class MainActivity extends AppCompatActivity {
         displayTotalPens();
         displayTotalPens2();
         displayTeamPens();
-        displayChrono();
     }
-
 
 }
