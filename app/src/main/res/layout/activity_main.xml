@@ -13,58 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/main_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:orientation="vertical">
-
-            <com.sardegnaisoladicavalli.example.showjumpingchrono.CustomChrono
-                android:id="@+id/chronometer"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="Chronometer"
-                android:textColor="@color/textColor"
-                android:textSize="@dimen/chronoSize" />
-
-            <LinearLayout
-                android:id="@+id/chrono_buttons"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/button_margin"
-                android:layout_marginLeft="@dimen/button_sideMargin"
-                android:layout_marginRight="@dimen/button_sideMargin"
-                android:layout_marginTop="@dimen/button_margin"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/startButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="startChrono"
-                    android:text="@string/chrono_start"
-                    android:textColor="@color/textColor"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/stopButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="stopChrono"
-                    android:text="@string/chrono_stop"
-                    android:textColor="@color/textColor"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-
             <LinearLayout
                 android:id="@+id/parentPanel"
                 android:layout_width="match_parent"
@@ -119,33 +67,11 @@
                         android:id="@+id/result_table"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/main_container"
+                        android:layout_below="@id/parentPanel"
                         android:layout_gravity="left"
                         android:layout_marginBottom="@dimen/text_margin"
                         android:layout_marginRight="@dimen/table_sideMargin"
                         android:layout_marginTop="@dimen/button_margin">
-
-                        <TableRow>
-
-                            <TextView
-                                android:layout_gravity="left"
-                                android:layout_marginRight="@dimen/text_margin"
-                                android:padding="@dimen/table_element_padding"
-                                android:text="@string/table_layout_chrono"
-                                android:textAllCaps="true"
-                                android:textColor="@color/scoreColor" />
-                        </TableRow>
-
-                        <TableRow>
-
-                            <TextView
-                                android:id="@+id/time_set"
-                                android:gravity="left"
-                                android:padding="@dimen/table_element_padding"
-                                android:text="00:00:00"
-                                android:textColor="@color/scoreColor"
-                                android:textSize="@dimen/scoreSize" />
-                        </TableRow>
 
                         <TableRow>
 
@@ -271,33 +197,11 @@
                         android:id="@+id/result_table2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/main_container"
+                        android:layout_below="@id/parentPanel"
                         android:layout_gravity="right"
                         android:layout_marginBottom="@dimen/text_margin"
                         android:layout_marginLeft="@dimen/table_sideMargin"
                         android:layout_marginTop="@dimen/button_margin">
-
-                        <TableRow>
-
-                            <TextView
-                                android:layout_gravity="right"
-                                android:layout_marginRight="@dimen/text_margin"
-                                android:padding="@dimen/table_element_padding"
-                                android:text="@string/table_layout_chrono"
-                                android:textAllCaps="true"
-                                android:textColor="@color/scoreColor" />
-                        </TableRow>
-
-                        <TableRow>
-
-                            <TextView
-                                android:id="@+id/time_set2"
-                                android:gravity="right"
-                                android:padding="@dimen/table_element_padding"
-                                android:text="00:00:00"
-                                android:textColor="@color/scoreColor"
-                                android:textSize="@dimen/scoreSize" />
-                        </TableRow>
 
                         <TableRow>
 
@@ -368,15 +272,13 @@
 
             </LinearLayout>
 
-        </LinearLayout>
-
         <LinearLayout
             android:id="@+id/totalTextViews"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/main_container">
+            android:layout_below="@id/parentPanel">
 
             <TextView
                 android:id="@+id/total_TeamPensText"
@@ -416,6 +318,5 @@
             android:textStyle="bold" />
 
     </RelativeLayout>
-
 
 </ScrollView>
