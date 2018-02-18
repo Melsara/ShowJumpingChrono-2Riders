@@ -36,25 +36,35 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /*Displaying course penalties of rider 1*/
+
     public void displayCoursePens (int coursePens){
         TextView courseView = (TextView) findViewById(R.id.course_pens);
         courseView.setText(String.valueOf(coursePens));
     }
+
+    /*Displaying course penalties of rider 2*/
 
     public void displayCoursePens2 (int coursePens2){
         TextView courseView2 = (TextView) findViewById(R.id.course_pens2);
         courseView2.setText(String.valueOf(coursePens2));
     }
 
+    /*Displaying time penalties of rider 1*/
+
     public void displayTimePens (int timePens){
         TextView timeViewPens = (TextView) findViewById(R.id.time_pens);
         timeViewPens.setText(String.valueOf(timePens));
     }
 
+    /*Displaying time penalties of rider 2*/
+
     public void displayTimePens2 (int timePens2){
         TextView timeViewPens2 = (TextView) findViewById(R.id.time_pens2);
         timeViewPens2.setText(String.valueOf(timePens2));
     }
+
+    /*Displaying total penalties of rider 1*/
 
     public void displayTotalPens () {
         TextView totalView = (TextView) findViewById(R.id.total_pens);
@@ -62,17 +72,23 @@ public class MainActivity extends AppCompatActivity {
         totalView.setText(String.valueOf(totalPens));
     }
 
+    /*Displaying total penalties of rider 2*/
+
     public void displayTotalPens2 () {
         TextView totalView2 = (TextView) findViewById(R.id.total_pens2);
         totalPens2 = timePens2 + coursePens2;
         totalView2.setText(String.valueOf(totalPens2));
     }
 
+    /*Summing the penalty points of the two riders as a team*/
+
     public void displayTeamPens (){
         TextView teamPens = (TextView) findViewById(R.id.total_TeamPens);
         totalTeamPens = totalPens + totalPens2;
         teamPens.setText(String.valueOf(totalTeamPens));
     }
+
+    /*Attributing 4 penalty points to the rider 1 dropping a pole, or whose horse refuses to jump a fence*/
 
     public void addCoursePens (View view) {
         coursePens = coursePens + COURSE_PENS;
@@ -82,6 +98,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /*Attributing 4 penalty points to the rider 2 dropping a pole, or whose horse refuses to jump a fence*/
+
     public void addCoursePens2 (View view) {
         coursePens2 = coursePens2 + COURSE_PENS;
         displayCoursePens2(coursePens2);
@@ -89,6 +107,8 @@ public class MainActivity extends AppCompatActivity {
         displayTeamPens();
 
     }
+
+    /*Attributing 1 penalty point to the rider 1, overcoming the maximum time allowed for completing the course*/
 
     public void addTimePens (View view) {
         timePens = timePens + TIME_PEN;
@@ -98,6 +118,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /*Attributing 1 penalty point to the rider 2, overcoming the maximum time allowed for completing the course*/
+
     public void addTimePens2 (View view) {
         timePens2 = timePens2 + TIME_PEN;
         displayTimePens2(timePens2);
@@ -105,6 +127,8 @@ public class MainActivity extends AppCompatActivity {
         displayTeamPens();
 
     }
+
+    /*Reset all penalties. Ready to another course/team*/
 
     public void resetAll (View view) {
         coursePens = 0;
