@@ -17,7 +17,8 @@
                 android:id="@+id/parentPanel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/edit_Text_Top_Margin">
 
                 <LinearLayout
                     android:layout_width="0dp"
